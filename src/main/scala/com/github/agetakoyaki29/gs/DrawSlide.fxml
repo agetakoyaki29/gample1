@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.github.agetakoyaki29.javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.canvas.*?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" stylesheets="@DrawSlide.css" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <BorderPane fx:id="primaryPane" BorderPane.alignment="CENTER">
+         <right>
+            <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefWidth="200.0" styleClass="bordered-pane-right" BorderPane.alignment="CENTER">
+               <items>
+                  <ScrollPane prefHeight="200.0">
+                     <content>
+                        <TreeTableView>
+                           <columns>
+                              <TreeTableColumn prefWidth="75.0" text="C1" />
+                              <TreeTableColumn prefWidth="75.0" text="C2" />
+                              <TreeTableColumn prefWidth="75.0" text="C3" />
+                           </columns>
+                        </TreeTableView>
+                     </content>
+                  </ScrollPane>
+                  <Pane style="-fx-background-color: gray;">
+                     <children>
+                        <Slider layoutX="14.0" layoutY="66.0" />
+                     </children></Pane>
+               </items>
+            </SplitPane>
+         </right>
+         <top>
+            <ToolBar maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" styleClass="bordered-pane-top" BorderPane.alignment="CENTER">
+              <items>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="見えちょ" />
+                <Button mnemonicParsing="false" text="だめ！" />
+              </items>
+            </ToolBar>
+         </top>
+         <center>
+            <ScrollPane hbarPolicy="NEVER" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
+               <content>
+               </content>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </ScrollPane>
+         </center>
+         <bottom>
+            <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="28.0" styleClass="bordered-pane-bottom" BorderPane.alignment="CENTER">
+               <children>
+                  <ToolBar maxHeight="-Infinity" minHeight="-Infinity" prefHeight="28.0" AnchorPane.leftAnchor="0.0">
+                     <items>
+                        <Text fx:id="statusText" strokeType="OUTSIDE" strokeWidth="0.0" text="hello, world!" />
+                        <Separator layoutX="68.0" layoutY="10.0" orientation="VERTICAL" />
+                        <Button mnemonicParsing="false" text="Botton" />
+                        <Separator orientation="VERTICAL" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                     </items>
+                     <padding>
+                        <Insets bottom="2.0" left="6.0" right="6.0" top="2.0" />
+                     </padding>
+                  </ToolBar>
+                  <ToolBar maxHeight="-Infinity" minHeight="-Infinity" nodeOrientation="RIGHT_TO_LEFT" prefHeight="28.0" AnchorPane.rightAnchor="0.0">
+                     <padding>
+                        <Insets bottom="2.0" left="6.0" right="6.0" top="2.0" />
+                     </padding>
+                     <items>
+                        <ToolBar nodeOrientation="LEFT_TO_RIGHT" styleClass="button">
+                           <items>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="倍率:" />
+                              <Label fx:id="scopeLabel" text="1.00e+0" />
+                           </items>
+                           <contextMenu>
+                              <ContextMenu>
+                                <items>
+                                    <MenuItem mnemonicParsing="false" text="初期位置" />
+                                  <MenuItem mnemonicParsing="false" text="倍率: 1" />
+                                    <CustomMenuItem hideOnClick="false" mnemonicParsing="false" text="+">
+                                       <content>
+                                          <HBox>
+                                             <children>
+                                                <Button mnemonicParsing="false" text="+" />
+                                                <Button mnemonicParsing="false" text="-" />
+                                             </children>
+                                          </HBox>
+                                       </content>
+                                    </CustomMenuItem>
+                                </items>
+                              </ContextMenu>
+                           </contextMenu>
+                        </ToolBar>
+                        <Separator orientation="VERTICAL" />
+                        <ToolBar nodeOrientation="LEFT_TO_RIGHT" styleClass="button">
+                           <items>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="角度:" />
+                              <Label text="-122" />
+                           </items>
+                        </ToolBar>
+                        <Separator orientation="VERTICAL" />
+                        <ToolBar nodeOrientation="LEFT_TO_RIGHT" styleClass="button">
+                           <items>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="位置:" />
+                              <Label text="21x51" />
+                           </items>
+                        </ToolBar>
+                        <Separator orientation="VERTICAL" />
+                     </items>
+                  </ToolBar>
+               </children>
+            </AnchorPane>
+         </bottom>
+         <left>
+            <AnchorPane prefWidth="120.0" styleClass="border-pane-left" BorderPane.alignment="CENTER">
+               <children>
+                  <FlowPane prefWrapLength="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <CheckBox mnemonicParsing="false" text="CheckBox" />
+                        <ToolBar orientation="VERTICAL">
+                           <items>
+                              <Button fx:id="button1" mnemonicParsing="false" text="Button1" />
+                              <Button fx:id="button2" mnemonicParsing="false" text="Button2">
+                                 <tooltip>
+                                    <Tooltip text="Empty Tooltip" />
+                                 </tooltip>
+                              </Button>
+                              <Button fx:id="button3" mnemonicParsing="false" text="Button3" />
+                           </items>
+                        </ToolBar>
+                        <ToolBar orientation="VERTICAL">
+                           <items>
+                              <RadioToggleButton fx:id="drawLine" selected="true" text="／">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="toggleGroup" />
+                                 </toggleGroup>
+                                 <tooltip>
+                                    <Tooltip text="draw line" />
+                                 </tooltip>
+                              </RadioToggleButton>
+                              <RadioToggleButton fx:id="drawCercle" text="〇" toggleGroup="$toggleGroup">
+                                 <tooltip>
+                                    <Tooltip text="draw circle" />
+                                 </tooltip>
+                              </RadioToggleButton>
+                           </items>
+                        </ToolBar>
+                        <ToolBar orientation="VERTICAL">
+                          <items>
+                            <Button mnemonicParsing="false" text="Button" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                              <Text layoutX="10.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                              <Text layoutX="10.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                          </items>
+                        </ToolBar>
+                     </children>
+                  </FlowPane>
+               </children>
+            </AnchorPane>
+         </left>
+      </BorderPane>
+   </center>
+</fx:root>
