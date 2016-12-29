@@ -14,20 +14,49 @@ import com.github.agetakoyaki29.slidefx.StageContainer
 import com.github.agetakoyaki29.slidefx.fxml.controller.RootedController
 import javafx.scene.canvas.Canvas
 import javafx.stage.Screen
+import com.github.agetakoyaki29.geometry.dim2.Point
+import com.github.agetakoyaki29.geometry.dim2.line.Dir
+import com.github.agetakoyaki29.geometry.dim2.line.Line
+import com.github.agetakoyaki29.gs.shape.Sen
+import javafx.collections.SetChangeListener
+import com.github.agetakoyaki29.gs.shape.Shape
+import com.github.agetakoyaki29.gs.shape.Ten
 
 
 class DrawSlideController extends BorderPane with SlideController with RootedController {
   
+  val pool = new ShapePool
+  
   val canvas = new GlassedCanvas
-	canvas.hotGC.strokeLine(10, 20, 500, 600)
-	canvas.coldGC.strokeCircle(10, 20, 500, 600)
-	var sp: Point2D = null
-	canvas.setOnMouseClicked((evt: MouseEvent) => {
-	  if(sp == null) sp = new Point2D(evt.getX, evt.getY)
-	  else {
-	    val ep = new Point2D(evt.getX, evt.getY)
-	    canvas.coldGC.strokeLine(sp, ep)
-	    sp = null
+  
+	; { // on click add pool
+  	var sp: Point = null
+  	canvas.setOnMouseClicked((evt: MouseEvent) => {
+  	  if(sp == null) sp = Point(evt)
+  	  else {
+  	    val ep = Point(evt)
+  	    if(!(sp sameWithDelta ep)) { 
+    	    pool.shapes.add(new Sen(Line(sp, ep)))
+    	    sp = null
+  	    }
+  	  }
+  	})
+	}
+	
+	// add change listener to draw
+	pool.shapes.addListener(new SetChangeListener[Shape] {
+	  def onChanged(change: SetChangeListener.Change[_ <: Shape]) = if(change.wasAdded) {
+      val shape = change.getElementAdded
+      shape.stroke(canvas.coldGC)
+	  }
+	})
+	
+	// add change listener to draw
+	pool.points.addListener(new SetChangeListener[Point] {
+	  def onChanged(change: SetChangeListener.Change[_ <: Point]) = if(change.wasAdded) {
+      val ten = new Ten(change.getElementAdded)
+//      ten.stroke(canvas.coldGC)
+      ten.fill(canvas.coldGC)
 	  }
 	})
 	
