@@ -15,11 +15,14 @@ class Sen(val line: Line) extends Shape {
   def getPts = Set(line.sp, line.ep)
   
   def stroke(gc: GraphicsContext) = {
+    val prev = gc.getStroke
+    
     gc.setStroke(Color.GRAY)
     val nwed = line.dir*40
     val newl = Line((line.sp-nwed).asInstanceOf[Point], nwed*2)
     gc.strokeLine2(newl.sp, newl.ep)
-    gc.setStroke(Color.BLACK)
+    
+    gc.setStroke(prev)
     gc.strokeLine2(line.sp, line.ep)
   }
   
