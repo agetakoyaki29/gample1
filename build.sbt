@@ -2,8 +2,9 @@
 lazy val root = (project in file("."))
   .settings(fxmlSettings: _*)
   .settings(
+    organization := "com.github.agetakoyaki29",
     name := "gample1",
-    version := "0.0",
+    version := "1.0",
     scalaVersion := "2.11.8",
 
     libraryDependencies += scalactic,
@@ -13,7 +14,7 @@ lazy val root = (project in file("."))
   )
   .dependsOn(scalafx)
   .dependsOn(slidefx1)
-  .dependsOn(geo1)
+  .dependsOn(geo3)
 
 // ---- settings ----
 lazy val fxmlSettings = Seq(
@@ -28,6 +29,6 @@ lazy val fxmlSettings = Seq(
 lazy val scalactic = "org.scalactic" %% "scalactic" % "2.2.5"
 lazy val scalatest = "org.scalatest" %% "scalatest" % "2.2.5" % "test"
 
-lazy val scalafx = RootProject(uri("git://github.com/agetakoyaki29/scalafx.git"))
-lazy val slidefx1 = RootProject(uri("git://github.com/agetakoyaki29/slidefx1.git"))
-lazy val geo1 = RootProject(uri("git://github.com/agetakoyaki29/geo1.git"))
+lazy val scalafx = RootProject(uri("git://github.com/agetakoyaki29/scalafx"))
+lazy val slidefx1 = RootProject(uri("git://github.com/agetakoyaki29/slidefx1"))
+lazy val geo3 = RootProject(file("../geo3"))
