@@ -14,12 +14,16 @@ class En(val circle: Circle) extends Shape {
 
   def getPts = Set(circle.sp, circle.ep)
 
+  val corner = Point(circle.range.norm, circle.range.norm)
+  val leftup = circle.sp - corner
+  val rightdown = circle.sp + corner
+
   def stroke(gc: GraphicsContext) = {
-    gc.strokeCircle2(circle.sp, circle.ep)
+    gc.strokeCircle2(leftup, corner*2)
   }
 
   def fill(gc: GraphicsContext) = {
-    gc.fillCircle2(circle.sp, circle.ep)
+    gc.fillCircle2(leftup, corner*2)
   }
 
   override def equals(op: Any): Boolean = op match {
