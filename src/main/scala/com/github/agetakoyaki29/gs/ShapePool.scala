@@ -8,6 +8,7 @@ import com.github.agetakoyaki29.gs.shape.Shape
 import com.github.agetakoyaki29.scala.geometry.dim2.point.Point
 import javafx.collections.SetChangeListener
 import com.github.agetakoyaki29.gs.shape.Sen
+import com.github.agetakoyaki29.gs.shape.En
 
 
 class ShapePool {
@@ -22,9 +23,12 @@ class ShapePool {
       shape match {
         case sen: Sen => shapes.foreach(_ match {
           case op: Sen => points.addAll(sen.line intersect op.line)
-          case _ =>
+          case op: En => points.addAll(sen.line intersect op.circle)
         })
-        case _ =>
+        case en: En => shapes.foreach(_ match {
+          case op: Sen => points.addAll(en.circle intersect op.line)
+          case op: En => points.addAll(en.circle intersect op.circle)
+        })
       }
 	  }
 	})
