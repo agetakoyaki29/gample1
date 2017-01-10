@@ -15,6 +15,10 @@ class ShapePool {
   val shapes = FXCollections.observableSet[Shape]()
   val points = FXCollections.observableSet[Point]()
 
+  def add(shape: Shape) = {
+    shapes.add(shape)
+  }
+
 	shapes.addListener(new SetChangeListener[Shape] {
 	  def onChanged(change: SetChangeListener.Change[_ <: Shape]) = if(change.wasAdded) {
       val shape = change.getElementAdded

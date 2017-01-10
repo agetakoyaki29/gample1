@@ -61,13 +61,13 @@ class DrawSlideController extends BorderPane with SlideController with RootedCon
   	  else {
   	    val ep = Point(evt)
   	    if(!(sp same ep)) {
-    	    pool.shapes.add(new Sen(Line(sp, ep)))
+    	    pool.add(new Sen(Line(sp, ep)))
     	    sp = null
   	    }
   	  }
   	})
   }
-  
+
   @FXML def onDrawCircle(evt: ActionEvent) = {
   	var sp: Point = null
   	canvas.setOnMouseClicked((evt: MouseEvent) => {
@@ -75,7 +75,7 @@ class DrawSlideController extends BorderPane with SlideController with RootedCon
   	  else {
   	    val ep = Point(evt)
   	    if(!(sp same ep)) {
-    	    pool.shapes.add(new En(Circle(sp, ep)))
+    	    pool.add(new En(Circle(sp, ep)))
     	    sp = null
   	    }
   	  }
